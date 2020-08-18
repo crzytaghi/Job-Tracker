@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const cors = require('cors');
 
 // CONFIGURATION
 const app = express();
@@ -20,9 +21,14 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true,
 // MIDDLEWARE
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(cors());
 
 const applicationController = require('./controllers/applications.js');
 app.use('/application', applicationController);
+
+app.get('/products/:id', (req,res,next) => {
+  res.json({msg: 'This is CORS-enabled for all origins!'})
+})
 
 // ===== Error / success ===== //
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
@@ -34,3 +40,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 app.listen(PORT, () => {
   console.log('listening on port', PORT);
 });
+
+app.listen(80, () => {
+  console.log('CORS-enabled web server listening on port 80');
+})
