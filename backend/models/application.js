@@ -4,7 +4,7 @@ const appSchema = new mongoose.Schema({
   status: {type:String, required:true},
   dateSubmitted: {type:String, required:true},
   jobTitle: {type:String, required:true},
-  company: {type:String, require:true},
+  company: {type:String, required:true},
   location: {type:String, required:true},
   link: {type:String, required:true}
 });

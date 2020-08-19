@@ -1,124 +1,95 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 class Form extends React.Component{
 
   state = {
-    app: []
+    app: [],
+    show:false
   }
 
-  // ========== MAKE A REQUEST TO THE DB ========== //
-  componentDidMount = () => {
-    axios.get('http://localhost:3000/application').then(
-      (response) => {
-        console.log(response.data);
-        this.setState({
-          app:response.data
-        })
-      }
-    )
-  }
 
-  // ========== CREATE A NEW JOB APPLICATION ========== //
-  addApp = (event) => {
-    event.preventDefault();
-    axios.post('http://localhost:3000/application',
-      {
-        status:this.newStatus,
-        dateSubmitted:this.newDate,
-        jobTitle:this.newJob,
-        company:this.newCompany,
-        location:this.newLocation,
-        link:this.newLink
-      }
-    ).then(
-      (response) => {
-        console.log(response.data);
-        this.setState({
-          app:response.data
-        }).catch(
-          (error) => {
-            console.log(error);
-          }
-        )
-      }
-    )
-  }
+  // // ========== CREATE A NEW JOB APPLICATION ========== //
+  // addApp = (event) => {
+  //   event.preventDefault();
+  //   axios.post('http://localhost:3000/application',
+  //     {
+  //       status:this.state.statusNew,
+  //       dateSubmitted:this.state.dateSubmittedNew,
+  //       jobTitle:this.state.jobTitleNew,
+  //       company:this.state.companyNew,
+  //       location:this.state.locationNew,
+  //       link:this.state.linkNew
+  //     }
+  //   ).then(
+  //     (response) => {
+  //       console.log(response.data);
+  //       this.setState({
+  //         app:response.data
+  //       })
+  //     }
+  //   )
+  // }
+  //
+  // newStatus = (event) => {
+  //   this.setState({
+  //     statusNew:event.target.value
+  //   })
+  // }
+  //
+  // newDate = (event) => {
+  //   this.setState({
+  //     dateSubmittedNew:event.target.value
+  //   })
+  // }
+  //
+  // newJob = (event) => {
+  //   this.setState({
+  //     jobTitleNew:event.target.value
+  //   })
+  // }
+  //
+  // newCompany = (event) => {
+  //   this.setState({
+  //     companyNew:event.target.value
+  //   })
+  // }
+  //
+  // newLocation = (event) => {
+  //   this.setState({
+  //     locationNew:event.target.value
+  //   })
+  // }
+  //
+  // newLink = (event) => {
+  //   this.setState({
+  //     linkNew:event.target.value
+  //   })
+  // }
 
-  newStatus = (event) => {
+  toggleForm = () => {
     this.setState({
-      status:event.target.value
-    })
-  }
-
-  newDate = (event) => {
-    this.setState({
-      dateSubmitted:event.target.value
-    })
-  }
-
-  newJob = (event) => {
-    this.setState({
-      jobTitle:event.target.value
-    })
-  }
-
-  newCompany = (event) => {
-    this.setState({
-      company:event.target.value
-    })
-  }
-
-  newLocation = (event) => {
-    this.setState({
-      location:event.target.value
-    })
-  }
-
-  newLink = (event) => {
-    this.setState({
-      link:event.target.value
+      show:!this.state.show
     })
   }
 
   render = () => {
+    const { addApp, newStatus, newDate, newJob, newCompany, newLocation, newLink } = this.props
     return(
       <div>
-        <form onSubmit={this.addApp}>
-          <input onChange={this.newStatus} type="text" placeholder="Status"/><br/>
-          <input onChange={this.newDate} type="date"/><br/>
-          <input onChange={this.newJob} type="text" placeholder="Job Title"/><br/>
-          <input onChange={this.newCompany} type="text" placeholder="Company"/><br/>
-          <input onChange={this.newLocation} type="text" placeholder="Location"/><br/>
-          <input onChange={this.newLink} type="text" placeholder="Link"/><br/>
-          <input type="submit" value="submit"/><br/>
-        </form>
-        {this.state.app.map((application,index) => {
-          return (
-            <table key={index}>
-              <thead>
-                <tr>
-                  <th>Status</th>
-                  <th>Date Submitted</th>
-                  <th>Job Title</th>
-                  <th>Company</th>
-                  <th>Location</th>
-                  <th>Link</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{application.status}</td>
-                  <td>{application.dateSubmitted}</td>
-                  <td>{application.jobTitle}</td>
-                  <td>{application.company}</td>
-                  <td>{application.location}</td>
-                  <td>{application.link}</td>
-                </tr>
-              </tbody>
-            </table>
-          )
-        })}
+        <button onClick={this.toggleForm}>Toggle Form</button>
+        {(this.state.show)
+          ? <form onSubmit={addApp}>
+            <input onChange={newStatus} type="text" placeholder="Status"/><br/>
+            <input onChange={newDate} type="date"/><br/>
+            <input onChange={newJob} type="text" placeholder="Job Title"/><br/>
+            <input onChange={newCompany} type="text" placeholder="Company"/><br/>
+            <input onChange={newLocation} type="text" placeholder="Location"/><br/>
+            <input onChange={newLink} type="text" placeholder="Link"/><br/>
+            <input type="submit" value="submit"/><br/>
+          </form>
+          : null
+         }
       </div>
     )
   }
