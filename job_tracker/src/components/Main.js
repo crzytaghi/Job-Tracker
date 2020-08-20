@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import Form from '../components/form';
+import Form from './form';
+import Edit from './Edit';
 
 class Main extends React.Component {
 
@@ -78,6 +79,16 @@ class Main extends React.Component {
     })
   }
 
+  deleteApp = (event) => {
+    axios.delete('http://localhost:3000/application/' + event.target.value).then(
+      (response) => {
+        this.setState({
+          app:response.data
+        })
+      }
+    )
+  }
+
   render = () => {
     return (
       <div>
@@ -94,6 +105,7 @@ class Main extends React.Component {
           <table key={i}>
             <thead>
               <tr>
+                <th><button onClick={this.deleteApp} value={application._id}>DELETE</button></th>
                 <th>Status</th>
                 <th>Date Submitted</th>
                 <th>Job Title</th>
@@ -104,7 +116,8 @@ class Main extends React.Component {
             </thead>
             <tbody>
               <tr>
-                <td>{application.status}</td>
+                <td></td>
+                <td><Edit index={application} /></td>
                 <td>{application.dateSubmitted}</td>
                 <td>{application.jobTitle}</td>
                 <td>{application.company}</td>
