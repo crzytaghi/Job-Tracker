@@ -1,9 +1,22 @@
 * {
-  border: 1px solid gold;
+  /* border: 1px solid gold; */
 }
 
 table {
   width: 100%;
   text-align: center;
-  background: rgba(255,0,0,0.5);
+  background: rgba(0,255,0,0.5);
+}
+
+.header {
+  text-align: center;
+  background: rgb(60,60,60);
+  color: ghostwhite;
+  border: 1px solid ghostwhite;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header button {
+  padding: 10px;
 }

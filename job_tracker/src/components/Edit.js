@@ -20,7 +20,7 @@ class Edit extends React.Component {
   }
 
   changeStatus = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     axios.put('http://localhost:3000/application/' + event.target.getAttribute('id'),
     {
       status:this.state.updatedStatus
@@ -28,7 +28,7 @@ class Edit extends React.Component {
   ).then(
       (response) => {
         this.setState({
-          app:response.data
+          app:response.data,
         })
       }
     )

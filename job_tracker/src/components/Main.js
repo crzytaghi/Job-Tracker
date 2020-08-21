@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Form from './form';
 import Edit from './Edit';
+import Header from './Header';
 
 class Main extends React.Component {
 
@@ -37,7 +38,13 @@ class Main extends React.Component {
       (response) => {
         console.log(response.data);
         this.setState({
-          app:response.data
+          app:response.data,
+          status:null,
+          dateSubmitted:null,
+          jobTitle:null,
+          company:null,
+          location:null,
+          link:null
         })
       }
     )
@@ -92,6 +99,7 @@ class Main extends React.Component {
   render = () => {
     return (
       <div>
+      <Header />
       <Form
         addApp={this.addApp}
         newStatus={this.newStatus}
