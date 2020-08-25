@@ -113,7 +113,6 @@ class Main extends React.Component {
           <table key={i}>
             <thead>
               <tr>
-                <th><button onClick={this.deleteApp} value={application._id}>DELETE</button></th>
                 <th>Status</th>
                 <th>Date Submitted</th>
                 <th>Job Title</th>
@@ -124,13 +123,15 @@ class Main extends React.Component {
             </thead>
             <tbody>
               <tr>
-                <td></td>
                 <td><Edit index={application} /></td>
                 <td>{application.dateSubmitted}</td>
                 <td>{application.jobTitle}</td>
                 <td>{application.company}</td>
                 <td>{application.location}</td>
-                <td>{application.link}</td>
+                <td><a rel="noopener noreferrer" className="job-link" target="_blank" href={application.link}>{application.jobTitle}</a></td>
+              </tr>
+              <tr>
+                <td className="delete" colSpan="6"><button onClick={this.deleteApp} value={application._id}>DELETE</button></td>
               </tr>
             </tbody>
           </table>
