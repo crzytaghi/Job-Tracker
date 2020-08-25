@@ -5,7 +5,8 @@
 table {
   width: 100%;
   text-align: center;
-  background: rgba(0,255,0,0.5);
+  background: rgb(60,60,60);
+  color: ghostwhite;
 }
 
 .header {
@@ -19,4 +20,12 @@ table {
 
 .header button {
   padding: 10px;
+}
+
+.offer {
+  background-color: rgba(0,255,0,0.5);
+}
+
+.reject {
+  background-color: rgba(255,0,0,0.5);
 }
