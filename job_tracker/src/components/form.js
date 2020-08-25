@@ -18,7 +18,7 @@ class Form extends React.Component{
   render = () => {
     const { addApp, newStatus, newDate, newJob, newCompany, newLocation, newLink } = this.props
     return(
-      <div>
+      <div className="main">
         <button onClick={this.toggleForm}>Toggle Form</button>
         {(this.state.show)
           ? <form onSubmit={addApp}>
