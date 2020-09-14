@@ -22,24 +22,24 @@ class Form extends React.Component{
         <button onClick={this.toggleForm}>Toggle Form</button>
         {(this.state.show)
           ? <form onSubmit={addApp}>
-              <label>Job Status:</label><br/>
+              <label>Job Status:</label>
                 <select onChange={newStatus}>
                   <option value="" disabled selected>Choose Status</option>
                   <option value="Pending">Pending</option>
                   <option value="Offer">Offer</option>
                   <option value="Rejected">Rejected</option>
-                </select><br/>
-              <label>Date Submitted:</label><br/>
-                <input onChange={newDate} type="date"/><br/>
-              <label>Job Title:</label><br/>
-                <input onChange={newJob} type="text" placeholder="Job Title"/><br/>
-              <label>Company:</label><br/>
-                <input onChange={newCompany} type="text" placeholder="Company"/><br/>
-              <label>Location:</label><br/>
-                <input onChange={newLocation} type="text" placeholder="Location"/><br/>
-              <label>Job Link:</label><br/>
-                <input onChange={newLink} type="text" placeholder="Link"/><br/>
-              <input type="submit" value="submit"/><br/>
+                </select>
+              <label>Date Submitted:</label>
+                <input onChange={newDate} type="date"/>
+              <label>Job Title:</label>
+                <input onChange={newJob} type="text" placeholder="Job Title"/>
+              <label>Company:</label>
+                <input onChange={newCompany} type="text" placeholder="Company"/>
+              <label>Location:</label>
+                <input onChange={newLocation} type="text" placeholder="Location"/>
+              <label>Job Link:</label>
+                <input onChange={newLink} type="text" placeholder="Link"/>
+              <input type="submit" value="submit"/>
             </form>
           : null
          }

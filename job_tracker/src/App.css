@@ -58,6 +58,7 @@ td {
   display: flex;
   justify-content: space-around;
   position: absolute;
+  margin-top: 30em;
   bottom: 0;
   width: 100%;
 }
