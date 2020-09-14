@@ -14,6 +14,15 @@
   overflow: auto;
 }
 
+/* .form {
+  min-height: 7vh;
+  margin: 1vh;
+} */
+
+.form button {
+  margin-bottom: 0.5vh;
+}
+
 table {
   width: 100%;
   text-align: center;
