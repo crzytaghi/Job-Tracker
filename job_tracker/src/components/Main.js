@@ -3,6 +3,7 @@ import axios from 'axios';
 import Form from './form';
 import Edit from './Edit';
 import Header from './Header';
+import Footer from './Footer';
 
 class Main extends React.Component {
 
@@ -98,7 +99,7 @@ class Main extends React.Component {
 
   render = () => {
     return (
-      <div>
+      <div className="main">
       <Header />
       <Form
         addApp={this.addApp}
@@ -137,6 +138,7 @@ class Main extends React.Component {
           </table>
         )
       }
+      <Footer />
       </div>
     )
   }
