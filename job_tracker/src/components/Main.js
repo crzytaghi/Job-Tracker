@@ -110,34 +110,36 @@ class Main extends React.Component {
         newLocation={this.newLocation}
         newLink={this.newLink}
       />
-      {this.state.app.map((application,i) =>
-          <table key={i}>
-            <thead>
-              <tr>
-                <th>Status</th>
-                <th>Date Submitted</th>
-                <th>Job Title</th>
-                <th>Company</th>
-                <th>Location</th>
-                <th>Link</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><Edit index={application} /></td>
-                <td>{application.dateSubmitted}</td>
-                <td>{application.jobTitle}</td>
-                <td>{application.company}</td>
-                <td>{application.location}</td>
-                <td><a rel="noopener noreferrer" className="job-link" target="_blank" href={application.link}>{application.jobTitle}</a></td>
-              </tr>
-              <tr>
-                <td className="delete" colSpan="6"><button onClick={this.deleteApp} value={application._id}>DELETE</button></td>
-              </tr>
-            </tbody>
-          </table>
-        )
-      }
+      <div className="table">
+        {this.state.app.map((application,i) =>
+            <table key={i}>
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Date Submitted</th>
+                  <th>Job Title</th>
+                  <th>Company</th>
+                  <th>Location</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><Edit index={application} /></td>
+                  <td>{application.dateSubmitted}</td>
+                  <td>{application.jobTitle}</td>
+                  <td>{application.company}</td>
+                  <td>{application.location}</td>
+                  <td><a rel="noopener noreferrer" className="job-link" target="_blank" href={application.link}>{application.jobTitle}</a></td>
+                </tr>
+                <tr>
+                  <td className="delete" colSpan="6"><button onClick={this.deleteApp} value={application._id}>DELETE</button></td>
+                </tr>
+              </tbody>
+            </table>
+          )
+        }
+      </div>
       <Footer />
       </div>
     )

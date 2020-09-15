@@ -14,13 +14,19 @@
   overflow: auto;
 }
 
-/* .form {
+.form {
   min-height: 7vh;
   margin: 1vh;
-} */
+}
 
 .form button {
   margin-bottom: 0.5vh;
+  margin-top: 80px;
+}
+
+.form label,
+.form input {
+  margin: 2px;
 }
 
 table {
@@ -28,7 +34,14 @@ table {
   text-align: center;
   background: rgb(60,60,60);
   color: ghostwhite;
+  border: 2px solid ghostwhite;
+  top: 100px;
+  margin-top: 2px;
 }
+
+/* .table {
+  margin-top: 100px;
+} */
 
 .header {
   text-align: center;
@@ -37,6 +50,10 @@ table {
   border: 1px solid ghostwhite;
   display: flex;
   justify-content: space-around;
+  top: 0;
+  height: 80px;
+  position: absolute;
+  width: 100%;
 }
 
 .header button {
@@ -46,10 +63,6 @@ table {
 th {
   width: 16%;
   border: 1px solid ghostwhite;
-}
-
-table {
-  border: 2px solid ghostwhite;
 }
 
 td {
