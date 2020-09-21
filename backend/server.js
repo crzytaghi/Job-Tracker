@@ -1,10 +1,10 @@
-// DEPENDECIES
+// ===== DEPENDECIES ===== //
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const cors = require('cors');
 
-// CONFIGURATION
+// ===== CONFIGURATION ===== //
 const app = express();
 const db = mongoose.connection;
 require('dotenv').config();
@@ -18,7 +18,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, autoIndex: false }
 );
 
-// MIDDLEWARE
+// ===== MIDDLEWARE ===== //
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
@@ -36,7 +36,7 @@ db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 
-// Listener
+// ===== Listener ===== //
 app.listen(PORT, () => {
   console.log('listening on port', PORT);
 });
