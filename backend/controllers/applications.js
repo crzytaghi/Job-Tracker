@@ -2,6 +2,11 @@ const express = require('express');
 const Application = require('../models/application.js');
 const app = express.Router();
 
+// app.use((req,res,next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   next();
+// })
+
 //INDEX - Get
 app.get('/', (req,res) => {
   Application.find({}, (err, allApps) => {

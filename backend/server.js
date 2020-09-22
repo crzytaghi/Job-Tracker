@@ -9,7 +9,7 @@ const app = express();
 const db = mongoose.connection;
 require('dotenv').config();
 
-// PORT
+// ===== PORT ===== //
 const PORT = process.env.PORT || 3000
 
 // ====== Database ====== //
