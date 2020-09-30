@@ -100,30 +100,30 @@ class Main extends React.Component {
   render = () => {
     return (
       <div className="main">
-      <Header />
-      <Form
-        addApp={this.addApp}
-        newStatus={this.newStatus}
-        newDate={this.newDate}
-        newJob={this.newJob}
-        newCompany={this.newCompany}
-        newLocation={this.newLocation}
-        newLink={this.newLink}
-      />
-      <div className="table">
-        {this.state.app.map((application,i) =>
-            <table key={i}>
-              <thead>
-                <tr>
-                  <th>Status</th>
-                  <th>Date Submitted</th>
-                  <th>Job Title</th>
-                  <th>Company</th>
-                  <th>Location</th>
-                  <th>Link</th>
-                </tr>
-              </thead>
-              <tbody>
+        <Header />
+        <Form
+          addApp={this.addApp}
+          newStatus={this.newStatus}
+          newDate={this.newDate}
+          newJob={this.newJob}
+          newCompany={this.newCompany}
+          newLocation={this.newLocation}
+          newLink={this.newLink}
+        />
+        <div className="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Date Submitted</th>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            {this.state.app.map((application,i) =>
+              <tbody key={i}>
                 <tr>
                   <td><Edit index={application} /></td>
                   <td>{application.dateSubmitted}</td>
@@ -131,16 +131,13 @@ class Main extends React.Component {
                   <td>{application.company}</td>
                   <td>{application.location}</td>
                   <td><a rel="noopener noreferrer" className="job-link" target="_blank" href={application.link}>{application.jobTitle}</a></td>
-                </tr>
-                <tr>
                   <td className="delete" colSpan="6"><button onClick={this.deleteApp} value={application._id}>DELETE</button></td>
                 </tr>
               </tbody>
-            </table>
-          )
-        }
-      </div>
-      <Footer />
+            )}
+          </table>
+        </div>
+        <Footer />
       </div>
     )
   }
