@@ -14,6 +14,22 @@
   overflow: auto;
 }
 
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25%;
+}
+
+.login button {
+  padding: 20px;
+  margin: 5px;
+  border: 1px solid ghostwhite;
+  border-radius: 10px;
+  color: ghostwhite;
+  background: rgb(60,60,60);
+}
+
 .form {
   min-height: 7vh;
   margin: 1vh;
@@ -37,6 +53,7 @@ table {
   border: 2px solid ghostwhite;
   top: 100px;
   margin-top: 2px;
+  margin-bottom: 50px;
 }
 
 /* .table-header {
