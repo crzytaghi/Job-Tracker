@@ -5,7 +5,6 @@ class Header extends React.Component {
     return (
       <div className="header">
         <h1>Job Tracker</h1>
-        {/*<button>Toggle Form</button>*/}
       </div>
     )
   }

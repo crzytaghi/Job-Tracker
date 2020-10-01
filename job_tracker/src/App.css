@@ -39,8 +39,10 @@ table {
   margin-top: 2px;
 }
 
-/* .table {
-  margin-top: 100px;
+/* .table-header {
+  position: absolute;
+  width: 100%;
+  margin-bottom: 200px;
 } */
 
 .header {
@@ -61,12 +63,13 @@ table {
 }
 
 th {
-  width: 16%;
+  width: 14%;
   border: 1px solid ghostwhite;
 }
 
 td {
   border: 1px solid ghostwhite;
+  width: 14%;
 }
 
 .job-link {

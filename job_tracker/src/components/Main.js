@@ -4,11 +4,13 @@ import Form from './form';
 import Edit from './Edit';
 import Header from './Header';
 import Footer from './Footer';
+import Login from './Login';
 
 class Main extends React.Component {
 
   state = {
-    app: []
+    app: [],
+    showLogin: false
   }
 
   // ========== MAKE A REQUEST TO THE DB ========== //
@@ -99,45 +101,49 @@ class Main extends React.Component {
 
   render = () => {
     return (
-      <div className="main">
-        <Header />
-        <Form
-          addApp={this.addApp}
-          newStatus={this.newStatus}
-          newDate={this.newDate}
-          newJob={this.newJob}
-          newCompany={this.newCompany}
-          newLocation={this.newLocation}
-          newLink={this.newLink}
-        />
-        <div className="table">
-          <table>
-            <thead>
-              <tr>
-                <th>Status</th>
-                <th>Date Submitted</th>
-                <th>Job Title</th>
-                <th>Company</th>
-                <th>Location</th>
-                <th>Link</th>
-              </tr>
-            </thead>
-            {this.state.app.map((application,i) =>
-              <tbody key={i}>
+      <div>
+      {this.state.showLogin ? <Login /> :
+        <div className="main">
+          <Header />
+          <Form
+            addApp={this.addApp}
+            newStatus={this.newStatus}
+            newDate={this.newDate}
+            newJob={this.newJob}
+            newCompany={this.newCompany}
+            newLocation={this.newLocation}
+            newLink={this.newLink}
+          />
+          <div className="table">
+            <table>
+              <thead className="table-header">
                 <tr>
-                  <td><Edit index={application} /></td>
-                  <td>{application.dateSubmitted}</td>
-                  <td>{application.jobTitle}</td>
-                  <td>{application.company}</td>
-                  <td>{application.location}</td>
-                  <td><a rel="noopener noreferrer" className="job-link" target="_blank" href={application.link}>{application.jobTitle}</a></td>
-                  <td className="delete" colSpan="6"><button onClick={this.deleteApp} value={application._id}>DELETE</button></td>
+                  <th>Status</th>
+                  <th>Date Submitted</th>
+                  <th>Job Title</th>
+                  <th>Company</th>
+                  <th>Location</th>
+                  <th>Link</th>
                 </tr>
-              </tbody>
-            )}
-          </table>
+              </thead>
+              {this.state.app.map((application,i) =>
+                <tbody key={i}>
+                  <tr>
+                    <td><Edit index={application} /></td>
+                    <td>{application.dateSubmitted}</td>
+                    <td>{application.jobTitle}</td>
+                    <td>{application.company}</td>
+                    <td>{application.location}</td>
+                    <td><a rel="noopener noreferrer" className="job-link" target="_blank" href={application.link}>{application.jobTitle}</a></td>
+                    <td className="delete" colSpan="6"><button onClick={this.deleteApp} value={application._id}>DELETE</button></td>
+                  </tr>
+                </tbody>
+              )}
+            </table>
+          </div>
+          <Footer />
         </div>
-        <Footer />
+      }
       </div>
     )
   }
