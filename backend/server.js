@@ -23,9 +23,19 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
 
+// Allow the database to communicate with the backend for the applications the user enters.
 const applicationController = require('./controllers/applications.js');
 app.use('/application', applicationController);
 
+// Create new users through the user model and controller
+const userController = require('./controllers/users.js');
+app.use('/user', userController);
+
+// Create sessions when the user logs in with the correct email and password, keeps the user logged in.
+const sessionController = require('./controllers/session.js');
+app.use('/session', sessionController);
+
+// Enable CORS to mitigate any CORS errors on the browser
 app.get('/products/:id', (req,res,next) => {
   res.json({msg: 'This is CORS-enabled for all origins!'})
 })
