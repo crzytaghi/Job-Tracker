@@ -16,6 +16,7 @@ class Form extends React.Component{
   }
 
   render = () => {
+    // initiating the variables in order to access the variables in the main.js file
     const { addApp, newStatus, newDate, newJob, newCompany, newLocation, newLink } = this.props
     return(
       <div className="form">
