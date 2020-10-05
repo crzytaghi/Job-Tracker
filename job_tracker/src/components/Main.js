@@ -10,7 +10,7 @@ class Main extends React.Component {
 
   state = {
     app: [],
-    showLogin: true
+    loggedInUser: false
   }
 
   // ========== MAKE A REQUEST TO THE DB ========== //
@@ -41,13 +41,7 @@ class Main extends React.Component {
       (response) => {
         console.log(response.data);
         this.setState({
-          app:response.data,
-          status:null,
-          dateSubmitted:null,
-          jobTitle:null,
-          company:null,
-          location:null,
-          link:null
+          app:response.data
         })
       }
     )
@@ -99,10 +93,69 @@ class Main extends React.Component {
     )
   }
 
+  // function to determine if the user is logged in. If so, sets the loggedInUser value to true which displays the info to the user.
+  signUp = (event) => {
+    event.preventDefault();
+    axios.post('http://localhost:3000/user',
+      {
+        firstName: this.state.newFirstName,
+        lastName: this.state.newLastName,
+        email: this.state.newEmail,
+        password: this.state.newPassword
+      }
+    ).then(
+      (response) => {
+        console.log(response);
+        this.setState({
+          loggedInUser:response.data
+        })
+      }
+    )
+  }
+
+  // Adding a first name
+  newFirst = (event) => {
+    // console.log(event.target.value);
+    this.setState({
+      newFirstName: event.target.vaule
+    })
+  }
+
+  // Adding a last name
+  newLast = (event) => {
+    // console.log(event.target.value);
+    this.setState({
+      newLastName: event.target.value
+    })
+  }
+
+  // Adding an email address that must be unique
+  emailNew = (event) => {
+    // console.log(event.target.value);
+    this.setState({
+      newEmail: event.target.value
+    })
+  }
+
+  // Adding a password
+  passwordNew = (event) => {
+    // console.log(event.target.value);
+    this.setState({
+      newPassword:event.target.value
+    })
+  }
+
   render = () => {
     return (
       <div>
-      {this.state.showLogin ? <Login /> :
+      {!this.state.loggedInUser ?
+        <Login
+          newFirst = {this.newFirst}
+          newLast = {this.newLast}
+          emailNew = {this.emailNew}
+          passwordNew = {this.passwordNew}
+          signup = {this.signUp}
+        /> :
         <div className="main">
           <Header />
           <Form

@@ -23,6 +23,7 @@ class Login extends React.Component {
   }
 
   render = () => {
+    const { newFirst, newLast, emailNew, passwordNew, signup } = this.props
     return (
       <div className="landing-page">
         <Header />
@@ -35,21 +36,23 @@ class Login extends React.Component {
 
             {(this.state.showLogin) ?
               <form>
-                First Name:<input type="text" placeholder="First Name"/>
-                Last Name:<input type="text" placeholder="Last Name"/>
-                Email:<input type="text" placeholder="Email"/>
-                Password:<input type="password" placeholder="8 Character Minimum"/>
-                <input type="submit" />
-              </form>
-              : null
-            }
-
-            {(this.state.showSignUp) ?
-              <form>
                 Email: <input type="text" placeholder="Email" />
                 Password: <input type="password" placeholder="Password" />
                 <input type="submit" />
               </form>
+
+              : null
+            }
+
+            {(this.state.showSignUp) ?
+              <form onSubmit={signup}>
+                First Name:<input onChange={newFirst} type="text" placeholder="First Name"/>
+                Last Name:<input onChange={newLast} type="text" placeholder="Last Name"/>
+                Email:<input onChange={emailNew} type="text" placeholder="Email"/>
+                Password:<input onChange={passwordNew} type="password" placeholder="8 Character Minimum"/>
+                <input type="submit" />
+              </form>
+
               :null
             }
 
