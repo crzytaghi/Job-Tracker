@@ -148,6 +148,7 @@ class Main extends React.Component {
   render = () => {
     return (
       <div>
+        {/* Passing the newFirst, newLast, emailNew, passwordNew, and signUp props into the Login.js file. Initially set to !this.state.loggedInUser so if the user is not logged in, it will only show the data from the Form.js file which only has the SignUp and Login Forms. */}
       {!this.state.loggedInUser ?
         <Login
           newFirst = {this.newFirst}
