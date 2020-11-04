@@ -2,6 +2,8 @@
 
 This application is for all user to simply track and manage their job applications and the status pertaining to each. Allowing each user to create a submission, make changes to previously created submissions, and delete entries all together. 
 
+![Home Page](./Images/Screen_Shot.png)
+
 ## Usage
 
 Implemented a function to show the submit new application form. To access the form, the user must click on the "Enter New Application" button which will change the value of the show key from false to true.
