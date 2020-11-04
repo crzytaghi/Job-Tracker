@@ -10,7 +10,7 @@ class Main extends React.Component {
 
   state = {
     app: [],
-    loggedInUser: false
+    loggedInUser: true
   }
 
   // ========== MAKE A REQUEST TO THE DB ========== //

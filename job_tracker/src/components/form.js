@@ -20,7 +20,7 @@ class Form extends React.Component{
     const { addApp, newStatus, newDate, newJob, newCompany, newLocation, newLink } = this.props
     return(
       <div className="form">
-        <button onClick={this.toggleForm}>Toggle Form</button>
+        <button onClick={this.toggleForm}>Enter New Application</button>
         {(this.state.show)
           ? <form onSubmit={addApp}>
               <label>Job Status:</label>
