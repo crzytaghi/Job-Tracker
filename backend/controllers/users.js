@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 router.post('/', (req,res) => {
   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
   User.create(req.body, (error, createdEmail) => {
-    // req.session.email = createdEmail; // SETS THE SESSION ON SIGN UP **** GETTING AN ERROR, 'CANNOT SET PROPERTY "EMAIL" OF UNDEFINED' ****
+    req.session.email = createdEmail; // SETS THE SESSION ON SIGN UP **** GETTING AN ERROR, 'CANNOT SET PROPERTY "EMAIL" OF UNDEFINED' ****
     res.json(createdEmail);
   })
 });

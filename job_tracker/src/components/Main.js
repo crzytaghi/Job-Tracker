@@ -10,7 +10,7 @@ class Main extends React.Component {
 
   state = {
     app: [],
-    loggedInUser: true
+    loggedInUser: false
   }
 
   // ========== MAKE A REQUEST TO THE DB ========== //
@@ -83,6 +83,7 @@ class Main extends React.Component {
     })
   }
 
+  // ========== DELETE A JOB APPLICATION ========== //
   deleteApp = (event) => {
     axios.delete('http://localhost:3000/application/' + event.target.value).then(
       (response) => {
@@ -93,7 +94,9 @@ class Main extends React.Component {
     )
   }
 
+  // ========== SIGNING UP A NEW USER AND ADDING THEIR INFOMRATION TO THE DATABSE ========== //
   // function to determine if the user is logged in. If so, sets the loggedInUser value to true which displays the info to the user.
+  // UNABLE TO SIGN UP A NEW USER, DATA KEY VALUE IS EMPTY
   signUp = (event) => {
     event.preventDefault();
     axios.post('http://localhost:3000/user',
@@ -115,7 +118,7 @@ class Main extends React.Component {
 
   // Adding a first name
   newFirst = (event) => {
-    // console.log(event.target.value);
+    console.log(event.target.value);
     this.setState({
       newFirstName: event.target.vaule
     })
@@ -123,7 +126,7 @@ class Main extends React.Component {
 
   // Adding a last name
   newLast = (event) => {
-    // console.log(event.target.value);
+    console.log(event.target.value);
     this.setState({
       newLastName: event.target.value
     })
@@ -131,7 +134,7 @@ class Main extends React.Component {
 
   // Adding an email address that must be unique
   emailNew = (event) => {
-    // console.log(event.target.value);
+    console.log(event.target.value);
     this.setState({
       newEmail: event.target.value
     })
@@ -139,9 +142,43 @@ class Main extends React.Component {
 
   // Adding a password
   passwordNew = (event) => {
-    // console.log(event.target.value);
+    console.log(event.target.value);
     this.setState({
       newPassword:event.target.value
+    })
+  }
+
+  // ========== LOGGING IN A USER ========== //
+  // AM UNABLE TO ACCESS THE EMAIL AND PASSWORD WHEN LOGGING A USER IN, NEED TO FIGURE OUT HOW OT ACCESS THE DATA. GETTING AN ERROR MESSAGE: USER NOT FOUND WHEN SUBMITTED THE LOGIN FORM.
+  loginUser = (event) => {
+    event.preventDefault();
+    axios.post('http://localhost:3000/session').then(
+      (response) => {
+        if(response.data.email) {
+          console.log(response.data);
+          this.setState({
+            loggedInUser:response.data
+          });
+        } else {
+          alert(response.data.message);
+        }
+      }
+    )
+  }
+
+  // Entering email for login
+  loginEmail = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      emailAddress:event.target.value
+    })
+  }
+
+  // Entering password for login
+  loginPassword = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      password:event.target.value
     })
   }
 
@@ -156,6 +193,9 @@ class Main extends React.Component {
           emailNew = {this.emailNew}
           passwordNew = {this.passwordNew}
           signup = {this.signUp}
+          loginUser = {this.loginUser}
+          loginEmail = {this.loginEmail}
+          loginPassword = {this.loginPassword}
         /> :
         <div className="main">
           <Header />

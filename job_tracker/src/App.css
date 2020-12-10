@@ -19,7 +19,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 25%;
+  padding: 10em;
 }
 
 .login button {

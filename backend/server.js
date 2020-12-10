@@ -19,6 +19,11 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true,
 );
 
 // ===== MIDDLEWARE ===== //
+app.use(session({
+  secret:'application',
+  resave:false,
+  saveUninitialized:false
+}));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors());

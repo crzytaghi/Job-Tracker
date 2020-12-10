@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import Footer from './Footer';
 
 class Login extends React.Component {
 
@@ -23,7 +24,7 @@ class Login extends React.Component {
   }
 
   render = () => {
-    const { newFirst, newLast, emailNew, passwordNew, signup } = this.props
+    const { newFirst, newLast, emailNew, passwordNew, signup, loginUser, loginEmail, loginPassword } = this.props
     return (
       <div className="landing-page">
         <Header />
@@ -35,9 +36,9 @@ class Login extends React.Component {
             {/*Determine if either button has been clicked by the user. If so, show the form the user requested.*/}
 
             {(this.state.showLogin) ?
-              <form>
-                Email: <input type="text" placeholder="Email" />
-                Password: <input type="password" placeholder="Password" />
+              <form onSubmit={loginUser}>
+                Email: <input onChange={loginEmail} type="text" placeholder="Email" />
+                Password: <input onChange={loginPassword} type="password" placeholder="Password" />
                 <input type="submit" />
               </form>
 
@@ -57,6 +58,7 @@ class Login extends React.Component {
             }
 
         </div>
+        <Footer />
       </div>
     )
   }
